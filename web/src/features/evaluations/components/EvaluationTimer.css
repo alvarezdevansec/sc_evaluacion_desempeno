@@ -1,0 +1,115 @@
+.header {
+    margin-top: 24px;
+}
+
+.evaluation-header {
+    margin-top: 24px;
+}
+
+.evaluation-timer {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+
+    padding: 12px 24px;
+    color: #ffffff;
+    background: #183b63;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+}
+
+
+
+
+.evaluation-timer__content {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: minmax(200px, 1fr) minmax(100px, 1.5fr) auto;
+    align-items: center;
+    gap: 24px;
+}
+
+.evaluation-timer__label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.evaluation-timer__progress {
+    height: 9px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+}
+
+.evaluation-timer__progress-value {
+    height: 100%;
+    background: #d6a84b;
+    border-radius: inherit;
+    transition: width 1s linear;
+}
+
+.evaluation-timer__time {
+    min-width: 95px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Advertencia: últimos cinco minutos */
+.evaluation-timer--warning {
+    background: #80601e;
+}
+
+/* Estado crítico: último minuto */
+.evaluation-timer--critical {
+    background: #a52d35;
+    /* background: #fff;
+    color: #183b63; */
+}
+
+/* Evaluación finalizada */
+.evaluation-timer--expired {
+    background: #183b63;
+    color: #fff;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 640px) {
+    .header {
+        margin-top: 45px;
+    }
+
+    .evaluation-header {
+        margin-top: 45px;
+    }
+
+    .evaluation-timer {
+        justify-content: center;
+        flex-direction: column;
+        gap: 6px;
+        text-align: center;
+    }
+
+    .evaluation-timer__content {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .evaluation-timer__time {
+        text-align: center;
+    }
+}
