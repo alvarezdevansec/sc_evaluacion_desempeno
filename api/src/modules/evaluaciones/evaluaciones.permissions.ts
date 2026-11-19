@@ -5,7 +5,7 @@ import { evaluacionesRepository } from './evaluaciones.repository.js';
 const evaluationPermissions: Record<number, number[]> = {
     1: [2, 3],
     2: [1, 2, 3],
-    3: [1],
+    3: [1, 3],
 };
 
 export function validarPermisoEvaluacion(
