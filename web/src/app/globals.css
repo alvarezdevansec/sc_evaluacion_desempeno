@@ -1986,3 +1986,9 @@ button {
 
     /* line-height: 1.2; */
 }
+
+.evaluation-card-disabled {
+    cursor: default;
+    opacity: 0.75;
+}
+
