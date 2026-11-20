@@ -668,16 +668,30 @@ export function useEvaluationFlow({
       if (!confirmado) return;
     }
 
+    // Actualizar disponibilidad después de finalizar.
+    if (submitted) {
+      try {
+        const availability = await getEvaluationAvailability(token);
+        setEvaluationAvailability(availability);
+      } catch (err) {
+        console.error(
+          '[EVALUATION] Error al actualizar disponibilidad:',
+          err
+        );
+
+        notify.error(
+          'No fue posible actualizar el estado de las evaluaciones.'
+        );
+      }
+    }
+
     // Si existe un seguimiento activo, primero esperamos los guardados
     // pendientes y pausamos en PostgreSQL antes de abandonar la evaluación.
-    // Esto aplica a los tres tipos de evaluación, no solo a subalternos.
     if (activeTrackingRef.current !== null) {
       const pudoRegresar = await goBack();
 
       if (!pudoRegresar) return;
     } else {
-      // Desde la selección de tipo o la lista de subalternos no hay
-      // un seguimiento individual activo que necesite pausarse.
       setTimerRunning(false);
       setCountdown(null);
     }
