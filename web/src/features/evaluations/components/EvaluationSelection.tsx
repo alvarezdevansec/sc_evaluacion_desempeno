@@ -91,7 +91,7 @@ export default function EvaluationSelection({
 
             return (
               <article
-                className="evaluation-card"
+                className={`evaluation-card ${!puedeIniciar ? 'evaluation-card-disabled' : ''}`}
                 key={item.id}
                 role={puedeIniciar ? 'button' : undefined}
                 tabIndex={puedeIniciar ? 0 : -1}
